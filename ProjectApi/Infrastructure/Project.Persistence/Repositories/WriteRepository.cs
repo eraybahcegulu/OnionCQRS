@@ -34,6 +34,23 @@ namespace Project.Persistence.Repositories
             await Task.Run(() => Table.Update(entity));
             return entity;
         }
+
+        public async Task SoftDeleteAsync(T entity)
+        {
+            if (entity is EntityBase entityBase)
+            {
+                entityBase.IsDeleted = true;
+                await UpdateAsync(entity);
+            }
+        }
+
+        public async Task SoftDeleteRangeAsync(IList<T> entities)
+        {
+            foreach (var entity in entities)
+            {
+                await SoftDeleteAsync(entity);
+            }
+        }
         public async Task HardDeleteAsync(T entity)
         {
             await Task.Run(() => Table.Remove(entity));
