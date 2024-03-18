@@ -20,7 +20,6 @@ namespace Project.Persistence.UnitOfWorks
         }
         public async ValueTask DisposeAsync() => await dbContext.DisposeAsync();
 
-
         public int Save() => dbContext.SaveChanges();
         public async Task<int> SaveAsync() => await dbContext.SaveChangesAsync();
         IReadRepository<T> IUnitOfWork.GetReadRepository<T>() => new ReadRepository<T>(dbContext);
