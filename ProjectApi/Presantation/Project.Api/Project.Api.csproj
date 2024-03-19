@@ -16,10 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Project.Mapper\Project.Mapper.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Project.Infrastructure\Project.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\Project.Persistence\Project.Persistence.csproj" />
   </ItemGroup>
 

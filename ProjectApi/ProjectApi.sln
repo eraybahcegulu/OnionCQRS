@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Persistence", "Infr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Api", "Presantation\Project.Api\Project.Api.csproj", "{33AA611F-B7BD-4206-975E-DF833435951C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project.Mapper", "Core\Project.Mapper\Project.Mapper.csproj", "{DE3EC01D-E511-4B54-8AC5-07184F1EE6CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{33AA611F-B7BD-4206-975E-DF833435951C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33AA611F-B7BD-4206-975E-DF833435951C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33AA611F-B7BD-4206-975E-DF833435951C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE3EC01D-E511-4B54-8AC5-07184F1EE6CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE3EC01D-E511-4B54-8AC5-07184F1EE6CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE3EC01D-E511-4B54-8AC5-07184F1EE6CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE3EC01D-E511-4B54-8AC5-07184F1EE6CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{BDD788E0-A398-4953-8ADC-F01987FE98FD} = {59425A4A-0672-47A5-960C-F78A3FF67EC2}
 		{480CFDBC-A93A-425A-9A2C-3D96E5D8FA52} = {59425A4A-0672-47A5-960C-F78A3FF67EC2}
 		{33AA611F-B7BD-4206-975E-DF833435951C} = {7A62DE8F-8FF9-43D9-8DF0-579BAE086019}
+		{DE3EC01D-E511-4B54-8AC5-07184F1EE6CF} = {8B6925D2-D016-431B-9D1B-6FE131DF8442}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F8B7D140-184B-4D42-AC3B-12C24D8D3700}
