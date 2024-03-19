@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace Project.Application.Features.Auth.Command.RefreshToken
 {
-    internal class RefreshTokenCommandResponse
+    public class RefreshTokenCommandResponse
     {
+        public string AccessToken { get; set; }
+        public string RefreshToken { get; set; }
     }
 }

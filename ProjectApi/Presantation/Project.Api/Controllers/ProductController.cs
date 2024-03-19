@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Project.Application.Features.Brands.Command.CreateBrand;
+using Project.Application.Features.Brands.Queries.GetAllBrands;
 using Project.Application.Features.Products.Command.CreateProduct;
 using Project.Application.Features.Products.Command.DeleteProduct;
 using Project.Application.Features.Products.Command.UpdateProduct;
@@ -47,6 +49,20 @@ namespace Project.Api.Controllers
         {
             await mediator.Send(request);
             return Ok();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateBrand(CreateBrandCommandRequest request)
+        {
+            await mediator.Send(request);
+            return Ok();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllBrands()
+        {
+            var response = await mediator.Send(new GetAllBrandsQueryRequest());
+            return Ok(response);
         }
     }
 }
