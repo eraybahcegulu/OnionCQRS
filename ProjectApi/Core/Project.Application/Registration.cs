@@ -2,8 +2,10 @@
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Project.Application.Bases;
 using Project.Application.Behaviors;
 using Project.Application.Exceptions;
+using Project.Application.Features.Products.Rules;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -22,6 +24,10 @@ namespace Project.Application
 
             services.AddTransient<ExceptionMiddleware>();
 
+
+            services.AddRulesFromAssemblyContaining(assembly, typeof(BaseRules));
+
+
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
             services.AddValidatorsFromAssembly(assembly);
@@ -30,5 +36,16 @@ namespace Project.Application
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
         }
 
+        private static IServiceCollection AddRulesFromAssemblyContaining(
+           this IServiceCollection services,
+           Assembly assembly,
+           Type type)
+        {
+            var types = assembly.GetTypes().Where(t => t.IsSubclassOf(type) && type != t).ToList();
+            foreach (var item in types)
+                services.AddTransient(item);
+
+            return services;
+        }
     }
 }
