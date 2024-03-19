@@ -1,6 +1,8 @@
-﻿using MediatR;
+﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
+using Project.Application.Behaviors;
 using Project.Application.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,10 @@ namespace Project.Application
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
 
+            services.AddValidatorsFromAssembly(assembly);
+            ValidatorOptions.Global.LanguageManager.Culture = new CultureInfo("tr");
+
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(FluentValidationBehevior<,>));
         }
 
     }
