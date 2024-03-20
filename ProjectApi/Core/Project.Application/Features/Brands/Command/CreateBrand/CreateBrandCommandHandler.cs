@@ -21,15 +21,10 @@ namespace Project.Application.Features.Brands.Command.CreateBrand
 
         public async Task<Unit> Handle(CreateBrandCommandRequest request, CancellationToken cancellationToken)
         {
-            Faker faker = new("tr");
-            List<Brand> brands = new();
+            Brand brand = new(request.Name);
 
-            for (int i = 0; i < 1000000; i++)
-            {
-                brands.Add(new(faker.Commerce.Department(1)));
-            }
+            await unitOfWork.GetWriteRepository<Brand>().AddAsync(brand);
 
-            await unitOfWork.GetWriteRepository<Brand>().AddRangeAsync(brands);
             await unitOfWork.SaveAsync();
 
             return Unit.Value;

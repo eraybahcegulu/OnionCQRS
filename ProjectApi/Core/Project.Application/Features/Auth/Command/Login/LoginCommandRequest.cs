@@ -10,9 +10,7 @@ namespace Project.Application.Features.Auth.Command.Login
 {
     public class LoginCommandRequest : IRequest<LoginCommandResponse>
     {
-        [DefaultValue("eraybahcegulu@gmail.com")]
         public string Email { get; set; }
-        [DefaultValue("eraybahcegulu")]
         public string Password { get; set; }
     }
 }

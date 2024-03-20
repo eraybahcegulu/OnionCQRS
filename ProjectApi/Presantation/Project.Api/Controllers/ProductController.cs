@@ -32,6 +32,7 @@ namespace Project.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> CreateProduct(CreateProductCommandRequest request)
         {
             await mediator.Send(request);
@@ -39,30 +40,18 @@ namespace Project.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> UpdateProduct(UpdateProductCommandRequest request)
         {
             await mediator.Send(request);
             return Ok();
         }
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> DeleteProduct(DeleteProductCommandRequest request)
         {
             await mediator.Send(request);
             return Ok();
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> CreateBrand(CreateBrandCommandRequest request)
-        {
-            await mediator.Send(request);
-            return Ok();
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> GetAllBrands()
-        {
-            var response = await mediator.Send(new GetAllBrandsQueryRequest());
-            return Ok(response);
         }
     }
 }
