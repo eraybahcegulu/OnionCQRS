@@ -1,14 +1,16 @@
-import Login from "./pages/Login"
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { routes } from './routes';
 
-function App() {
-
+const App = () => {
   return (
+    <BrowserRouter>
+      <Routes>
+        {routes.map((route, index) => (
+          <Route key={index} path={route.path} element={route.element} />
+        ))}
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
-    <div className="min-h-screen p-10 max-h-screen flex  flex-col bg-gradient-to-b from-[#2a0f33] to-[#490581] text-white">
-
-      <Login/>
-    </div>
-  )
-}
-
-export default App
+export default App;

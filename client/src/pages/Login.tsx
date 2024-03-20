@@ -1,10 +1,12 @@
-import { Input } from '@nextui-org/react'
-import React from 'react'
+import UserLogin from '../components/UserLogin'
 
 const Login = () => {
-  return (
-    <Input type="email" label="Email" />
-  )
+    return (
+        <div>
+            <UserLogin />
+        </div>
+
+    )
 }
 
 export default Login
