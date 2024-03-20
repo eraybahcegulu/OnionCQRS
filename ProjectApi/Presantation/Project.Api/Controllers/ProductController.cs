@@ -26,8 +26,8 @@ namespace Project.Api.Controllers
         [Authorize]
         public async Task<IActionResult> GetAllProducts()
         {
+            await Task.Delay(1000);
             var response = await mediator.Send(new GetAllProductsQueryRequest());
-
             return Ok(response);
         }
 
@@ -35,6 +35,7 @@ namespace Project.Api.Controllers
         [Authorize]
         public async Task<IActionResult> CreateProduct(CreateProductCommandRequest request)
         {
+            await Task.Delay(1000);
             await mediator.Send(request);
             return Ok();
         }
@@ -43,6 +44,7 @@ namespace Project.Api.Controllers
         [Authorize]
         public async Task<IActionResult> UpdateProduct(UpdateProductCommandRequest request)
         {
+            await Task.Delay(1000);
             await mediator.Send(request);
             return Ok();
         }
@@ -50,6 +52,7 @@ namespace Project.Api.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteProduct(DeleteProductCommandRequest request)
         {
+            await Task.Delay(1000);
             await mediator.Send(request);
             return Ok();
         }

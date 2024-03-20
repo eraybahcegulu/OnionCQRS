@@ -23,6 +23,7 @@ namespace Project.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterCommandRequest request)
         {
+            await Task.Delay(1000);
             await mediator.Send(request);
             return StatusCode(StatusCodes.Status201Created);
         }
@@ -30,6 +31,7 @@ namespace Project.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginCommandRequest request)
         {
+            await Task.Delay(1000);
             var response = await mediator.Send(request);
             return StatusCode(StatusCodes.Status200OK, response);
         }
@@ -37,6 +39,7 @@ namespace Project.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> RefreshToken(RefreshTokenCommandRequest request)
         {
+            await Task.Delay(1000);
             var response = await mediator.Send(request);
             return StatusCode(StatusCodes.Status200OK, response);
         }
@@ -44,6 +47,7 @@ namespace Project.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Revoke(RevokeCommandRequest request)
         {
+            await Task.Delay(1000);
             await mediator.Send(request);
             return StatusCode(StatusCodes.Status200OK);
         }
@@ -51,6 +55,7 @@ namespace Project.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> RevokeAll()
         {
+                        await Task.Delay(1000);
             await mediator.Send(new RevokeAllCommandRequest());
             return StatusCode(StatusCodes.Status200OK);
         }

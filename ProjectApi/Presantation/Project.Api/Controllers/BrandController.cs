@@ -23,6 +23,7 @@ namespace Project.Api.Controllers
         [Authorize]
         public async Task<IActionResult> CreateBrand(CreateBrandCommandRequest request)
         {
+            await Task.Delay(1000);
             await mediator.Send(request);
             return Ok();
         }
@@ -31,6 +32,7 @@ namespace Project.Api.Controllers
         [Authorize]
         public async Task<IActionResult> GetAllBrands()
         {
+            await Task.Delay(1000);
             var response = await mediator.Send(new GetAllBrandsQueryRequest());
             return Ok(response);
         }
