@@ -1,11 +1,13 @@
 import { Button, Input } from "@nextui-org/react";
-import { ErrorMessage, Field, FieldProps, Form, Formik, useFormikContext } from "formik";
+import { ErrorMessage, Field, FieldProps, Form, Formik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { registerService } from "../services/AuthService";
 import * as Yup from "yup";
-import axios, { AxiosError } from "axios";
+import { AxiosError } from "axios";
 import { ErrorResponse } from "../types/types";
 import toast from 'react-hot-toast';
+import { useMutation } from "react-query";
+import LoadingButton from "./LoadingButton";
 
 const validationSchema = Yup.object({
   fullName: Yup.string().required("Name and Surname required to register"),
@@ -18,72 +20,75 @@ const validationSchema = Yup.object({
 });
 
 const UserRegister = () => {
+  const navigate = useNavigate();
+  const registerMutation = useMutation(registerService,
+    {
+      onSuccess: () => {
+        toast.success("Successfully registered");
+      },
+      onError: (error) => {
+          const axiosError = error as AxiosError
+          if (axiosError.response && axiosError.response.data) {
+            const errorMessage = (axiosError.response.data as ErrorResponse).Errors[0];
+            toast.error(errorMessage);
+          }
+          else{
+            toast.error("Server Error");
+          }
+        
+      }
+    });
   return (
 
     <Formik
       initialValues={{ fullName: "", email: "", password: "", confirmPassword: "" }}
       validationSchema={validationSchema}
-      onSubmit={async (values, { setSubmitting }) => {
-        try {
-          await registerService(values);
-          toast.success("Successfully registered");
-
-        } catch (error) {
-          if (axios.isAxiosError(error)) {
-            const axiosError = error as AxiosError
-            if (axiosError.response && axiosError.response.data) {
-              const errorMessage = (axiosError.response.data as ErrorResponse).Errors[0];
-              toast.error(errorMessage);
-            }
-          }
-          setSubmitting(false);
-        }
+      onSubmit={async (values) => {
+        await registerMutation.mutateAsync(values);
       }}
     >
-      <InnerForm />
+      <Form>
+        <div className='bg-white h-[500px] w-[400px] flex flex-col gap-10 items-center justify-center rounded-2xl'>
+          <div className="h-[50px] w-[300px]">
+            <Field name="fullName" component={fullNameInput} />
+            <ErrorMessage name="fullName" component="div" className="text-red-500 text-sm" />
+          </div>
+
+          <div className="h-[50px] w-[300px]">
+            <Field name="email" type="email" component={emailInput} />
+            <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+          </div>
+
+          <div className="h-[50px] w-[300px]">
+            <Field name="password" type="password" component={passwordInput} />
+            <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
+          </div>
+
+          <div className="h-[50px] w-[300px]">
+            <Field name="confirmPassword" type="password" component={confirmPasswordInput} />
+            <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-sm" />
+          </div>
+
+          <div className="h-[50px] w-[300px] flex items-center justify-center">
+
+            {
+              registerMutation.isLoading
+                ?
+                <LoadingButton color="primary" className='absolute'/>
+                :
+                <Button type='submit' className="absolute" color="primary" variant="shadow">
+                  Register
+                </Button>
+            }
+
+            <span className="ml-auto text-blue-500 cursor-pointer" onClick={() => navigate('/login')}> Login </span>
+
+          </div>
+        </div>
+      </Form>
     </Formik>
   )
 }
-
-const InnerForm = () => {
-  const { isSubmitting } = useFormikContext();
-  const navigate = useNavigate();
-  return (
-    <Form>
-      <div className='bg-white h-[500px] w-[400px] flex flex-col gap-10 items-center justify-center rounded-2xl'>
-        <div className="h-[50px] w-[300px]">
-          <Field name="fullName" component={fullNameInput} />
-          <ErrorMessage name="fullName" component="div" className="text-red-500 text-sm" />
-        </div>
-
-        <div className="h-[50px] w-[300px]">
-          <Field name="email" type="email" component={emailInput} />
-          <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
-        </div>
-
-        <div className="h-[50px] w-[300px]">
-          <Field name="password" type="password" component={passwordInput} />
-          <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
-        </div>
-
-        <div className="h-[50px] w-[300px]">
-          <Field name="confirmPassword" type="password" component={confirmPasswordInput} />
-          <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-sm" />
-        </div>
-
-        <div className="h-[50px] w-[300px] flex items-center justify-center">
-
-          <Button type='submit' disabled={isSubmitting} className="absolute" color="primary" variant="shadow">
-            {isSubmitting ? 'Submitting...' : 'Register'}
-          </Button>
-
-          <span className="ml-auto text-blue-500 cursor-pointer" onClick={() => navigate('/login')}> Login </span>
-
-        </div>
-      </div>
-    </Form>
-  );
-};
 
 const fullNameInput = ({ field }: FieldProps) => {
   return <Input {...field} variant='bordered' label="Name Surname" />;
