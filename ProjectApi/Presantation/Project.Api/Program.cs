@@ -24,6 +24,17 @@ builder.Configuration
     .AddJsonFile("appsettings.json", optional:false)
     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(
+        policy =>
+        {
+            policy.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader();
+        });
+});
+
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddInfrastructure(builder.Configuration);
 builder.Services.AddApplication();
@@ -66,6 +77,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors();
 
 app.ConfigureExceptionHandlingMiddleware();
 app.UseAuthorization();
