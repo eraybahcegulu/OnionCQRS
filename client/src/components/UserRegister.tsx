@@ -27,15 +27,15 @@ const UserRegister = () => {
         toast.success("Successfully registered");
       },
       onError: (error) => {
-          const axiosError = error as AxiosError
-          if (axiosError.response && axiosError.response.data) {
-            const errorMessage = (axiosError.response.data as ErrorResponse).Errors[0];
-            toast.error(errorMessage);
-          }
-          else{
-            toast.error("Server Error");
-          }
-        
+        const axiosError = error as AxiosError
+        if (axiosError.response && axiosError.response.data) {
+          const errorMessage = (axiosError.response.data as ErrorResponse).Errors[0];
+          toast.error(errorMessage);
+        }
+        else {
+          toast.error("Server Error");
+        }
+
       }
     });
   return (
@@ -46,45 +46,51 @@ const UserRegister = () => {
       onSubmit={async (values) => {
         await registerMutation.mutateAsync(values);
       }}
-    >
+    > 
       <Form>
-        <div className='bg-white h-[500px] w-[400px] flex flex-col gap-10 items-center justify-center rounded-2xl'>
-          <div className="h-[50px] w-[300px]">
-            <Field name="fullName" component={fullNameInput} />
-            <ErrorMessage name="fullName" component="div" className="text-red-500 text-sm" />
+        <div className=" bg-gradient-to-b from-[#9566c2] to-[#ffffff] border border-black shadow-md shadow-black p-10 rounded-2xl flex flex-col gap-3 items-center justify-center">
+          <div >
+            <span className="text-2xl font-bold"> REGISTER </span>
           </div>
+          <div className=' flex flex-col gap-10 items-center justify-center'>
+            <div className="h-[50px] w-[300px]">
+              <Field name="fullName" component={fullNameInput} />
+              <ErrorMessage name="fullName" component="div" className="text-red-500 text-sm" />
+            </div>
 
-          <div className="h-[50px] w-[300px]">
-            <Field name="email" type="email" component={emailInput} />
-            <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
-          </div>
+            <div className="h-[50px] w-[300px]">
+              <Field name="email" type="email" component={emailInput} />
+              <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+            </div>
 
-          <div className="h-[50px] w-[300px]">
-            <Field name="password" type="password" component={passwordInput} />
-            <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
-          </div>
+            <div className="h-[50px] w-[300px]">
+              <Field name="password" type="password" component={passwordInput} />
+              <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
+            </div>
 
-          <div className="h-[50px] w-[300px]">
-            <Field name="confirmPassword" type="password" component={confirmPasswordInput} />
-            <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-sm" />
-          </div>
+            <div className="h-[50px] w-[300px]">
+              <Field name="confirmPassword" type="password" component={confirmPasswordInput} />
+              <ErrorMessage name="confirmPassword" component="div" className="text-red-500 text-sm" />
+            </div>
 
-          <div className="h-[50px] w-[300px] flex items-center justify-center">
+            <div className="h-[50px] w-[300px] flex items-center justify-center">
 
-            {
-              registerMutation.isLoading
-                ?
-                <LoadingButton color="primary" className='absolute'/>
-                :
-                <Button type='submit' className="absolute" color="primary" variant="shadow">
-                  Register
-                </Button>
-            }
+              {
+                registerMutation.isLoading
+                  ?
+                  <LoadingButton color="secondary" className='absolute w-[100px]' />
+                  :
+                  <Button type='submit' className="absolute w-[100px]" color="secondary" variant="shadow">
+                    Register
+                  </Button>
+              }
 
-            <span className="ml-auto text-blue-500 cursor-pointer" onClick={() => navigate('/login')}> Login </span>
+              <span className="ml-auto text-blue-500 cursor-pointer" onClick={() => navigate('/login')}> Login </span>
 
+            </div>
           </div>
         </div>
+
       </Form>
     </Formik>
   )
