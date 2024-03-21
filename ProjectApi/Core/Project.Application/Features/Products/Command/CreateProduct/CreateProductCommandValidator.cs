@@ -20,6 +20,7 @@ namespace Project.Application.Features.Products.Command.CreateProduct
                 .WithName("Description");
 
             RuleFor(x => x.BrandId)
+                .NotEmpty()
                 .GreaterThan(0)
                 .WithName("Brand");
 

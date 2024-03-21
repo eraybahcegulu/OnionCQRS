@@ -33,11 +33,13 @@ namespace Project.Application.Features.Products.Command.CreateProduct
             if (await unitOfWork.SaveAsync() > 0)
             {
                 foreach (var categoryId in request.CategoryIds)
+                {
                     await unitOfWork.GetWriteRepository<ProductCategory>().AddAsync(new()
                     {
                         ProductId = product.Id,
                         CategoryId = categoryId
                     });
+                }
 
                 await unitOfWork.SaveAsync();
             }

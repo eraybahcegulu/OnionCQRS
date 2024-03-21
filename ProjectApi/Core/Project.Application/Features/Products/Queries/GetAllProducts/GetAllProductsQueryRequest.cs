@@ -12,6 +12,6 @@ namespace Project.Application.Features.Products.Queries.GetAllProducts
     {
         public string CacheKey => "GetAllProducts";
 
-        public double CacheTime => 60;
+        public double CacheTime => 0.1;
     }
 }

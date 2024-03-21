@@ -12,6 +12,6 @@ namespace Project.Application.Features.Brands.Queries.GetAllBrands
     {
         public string CacheKey => "GetAllBrands";
 
-        public double CacheTime => 5;
+        public double CacheTime => 0.1;
     }
 }

@@ -10,7 +10,14 @@ const NotAuth = () => {
                 status="403"
                 title="403"
                 subTitle="Sorry, you are not authorized to access this page."
-                extra={<Button onClick={() => navigate('/')} color='primary'>Back Login</Button>}
+                extra={
+                    <Button onClick={() => {
+                        localStorage.clear();
+                        navigate('/');
+                    }} color='primary'>
+                        Back Login
+                    </Button>
+                }
             />
         </div>
     )

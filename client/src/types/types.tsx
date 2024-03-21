@@ -37,8 +37,26 @@ export interface UserContextType {
 export interface Product {
     id: number;
     title: string;
+    brand:{
+        name: string;
+    }
     description: string;
     price: number;
     discount: number;
+    createdDate: Date;
+}
+
+export interface CreateProduct {
+    title: string;
+    brandId: string;
+    description: string;
+    price: number;
+    discount: number;
+    categoryIds: object
+}
+
+export interface Brand {
+    id: number;
+    name: string;
     createdDate: Date;
 }

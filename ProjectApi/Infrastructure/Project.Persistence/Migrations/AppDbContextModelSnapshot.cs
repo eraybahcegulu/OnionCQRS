@@ -152,23 +152,23 @@ namespace Project.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 3, 20, 15, 26, 45, 166, DateTimeKind.Local).AddTicks(4864),
+                            CreatedDate = new DateTime(2024, 3, 22, 2, 14, 38, 483, DateTimeKind.Local).AddTicks(6366),
                             IsDeleted = false,
-                            Name = "Health & Kids"
+                            Name = "Electronics"
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 3, 20, 15, 26, 45, 166, DateTimeKind.Local).AddTicks(4884),
+                            CreatedDate = new DateTime(2024, 3, 22, 2, 14, 38, 483, DateTimeKind.Local).AddTicks(6374),
                             IsDeleted = false,
-                            Name = "Grocery & Beauty"
+                            Name = "Games"
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 3, 20, 15, 26, 45, 166, DateTimeKind.Local).AddTicks(4894),
+                            CreatedDate = new DateTime(2024, 3, 22, 2, 14, 38, 483, DateTimeKind.Local).AddTicks(6411),
                             IsDeleted = true,
-                            Name = "Computers"
+                            Name = "Books & Baby"
                         });
                 });
 
@@ -204,7 +204,7 @@ namespace Project.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2024, 3, 20, 15, 26, 45, 166, DateTimeKind.Local).AddTicks(8217),
+                            CreatedDate = new DateTime(2024, 3, 22, 2, 14, 38, 483, DateTimeKind.Local).AddTicks(8555),
                             IsDeleted = false,
                             Name = "Elektrik",
                             ParentId = 0,
@@ -213,7 +213,7 @@ namespace Project.Persistence.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2024, 3, 20, 15, 26, 45, 166, DateTimeKind.Local).AddTicks(8219),
+                            CreatedDate = new DateTime(2024, 3, 22, 2, 14, 38, 483, DateTimeKind.Local).AddTicks(8557),
                             IsDeleted = false,
                             Name = "Moda",
                             ParentId = 0,
@@ -222,7 +222,7 @@ namespace Project.Persistence.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2024, 3, 20, 15, 26, 45, 166, DateTimeKind.Local).AddTicks(8221),
+                            CreatedDate = new DateTime(2024, 3, 22, 2, 14, 38, 483, DateTimeKind.Local).AddTicks(8558),
                             IsDeleted = false,
                             Name = "Bilgisayar",
                             ParentId = 1,
@@ -231,7 +231,7 @@ namespace Project.Persistence.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedDate = new DateTime(2024, 3, 20, 15, 26, 45, 166, DateTimeKind.Local).AddTicks(8224),
+                            CreatedDate = new DateTime(2024, 3, 22, 2, 14, 38, 483, DateTimeKind.Local).AddTicks(8560),
                             IsDeleted = false,
                             Name = "Kadın",
                             ParentId = 2,
@@ -275,28 +275,28 @@ namespace Project.Persistence.Migrations
                         {
                             Id = 1,
                             CategoryId = 1,
-                            CreatedDate = new DateTime(2024, 3, 20, 15, 26, 45, 169, DateTimeKind.Local).AddTicks(3917),
-                            Description = "Ekşili minima uzattı kalemi karşıdakine.",
+                            CreatedDate = new DateTime(2024, 3, 22, 2, 14, 38, 485, DateTimeKind.Local).AddTicks(9797),
+                            Description = "Voluptatem voluptatem iusto ex adipisci.",
                             IsDeleted = false,
-                            Title = "Ut."
+                            Title = "Koştum."
                         },
                         new
                         {
                             Id = 2,
                             CategoryId = 3,
-                            CreatedDate = new DateTime(2024, 3, 20, 15, 26, 45, 169, DateTimeKind.Local).AddTicks(3971),
-                            Description = "Voluptatem accusantium koştum makinesi gördüm.",
+                            CreatedDate = new DateTime(2024, 3, 22, 2, 14, 38, 485, DateTimeKind.Local).AddTicks(9841),
+                            Description = "Vel sokaklarda incidunt voluptatem değirmeni.",
                             IsDeleted = true,
-                            Title = "Kapının camisi."
+                            Title = "Çakıl sayfası."
                         },
                         new
                         {
                             Id = 3,
                             CategoryId = 4,
-                            CreatedDate = new DateTime(2024, 3, 20, 15, 26, 45, 169, DateTimeKind.Local).AddTicks(4047),
-                            Description = "Nemo domates orta de tempora.",
+                            CreatedDate = new DateTime(2024, 3, 22, 2, 14, 38, 485, DateTimeKind.Local).AddTicks(9876),
+                            Description = "Sıla makinesi duyulmamış sit sandalye.",
                             IsDeleted = false,
-                            Title = "Eum."
+                            Title = "Gördüm."
                         });
                 });
 
@@ -342,23 +342,23 @@ namespace Project.Persistence.Migrations
                         {
                             Id = 1,
                             BrandId = 1,
-                            CreatedDate = new DateTime(2024, 3, 20, 15, 26, 45, 172, DateTimeKind.Local).AddTicks(7092),
+                            CreatedDate = new DateTime(2024, 3, 22, 2, 14, 38, 488, DateTimeKind.Local).AddTicks(7902),
                             Description = "New ABC 13 9370, 13.3, 5th Gen CoreA5-8250U, 8GB RAM, 256GB SSD, power UHD Graphics, OS 10 Home, OS Office A & J 2016",
-                            Discount = 9.2614069201890m,
+                            Discount = 9.370602423488360m,
                             IsDeleted = false,
-                            Price = 533.71m,
-                            Title = "Rustic Plastic Fish"
+                            Price = 20.12m,
+                            Title = "Licensed Metal Ball"
                         },
                         new
                         {
                             Id = 2,
                             BrandId = 3,
-                            CreatedDate = new DateTime(2024, 3, 20, 15, 26, 45, 172, DateTimeKind.Local).AddTicks(7130),
-                            Description = "The automobile layout consists of a front-engine design, with transaxle-type transmissions mounted at the rear of the engine and four wheel drive",
-                            Discount = 7.372679322900650m,
+                            CreatedDate = new DateTime(2024, 3, 22, 2, 14, 38, 488, DateTimeKind.Local).AddTicks(7933),
+                            Description = "New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart",
+                            Discount = 8.787984416588690m,
                             IsDeleted = false,
-                            Price = 906.96m,
-                            Title = "Unbranded Soft Chicken"
+                            Price = 228.95m,
+                            Title = "Small Rubber Keyboard"
                         });
                 });
 
@@ -369,6 +369,15 @@ namespace Project.Persistence.Migrations
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Id")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.HasKey("ProductId", "CategoryId");
 

@@ -1,18 +1,40 @@
 import axios from "axios"
-import { GET_PRODUCTS_API_URL } from "../constants/apiUrls"
+import { CREATE_PRODUCT_API_URL, GET_PRODUCTS_API_URL } from "../constants/apiUrls"
+import { CreateProduct } from "../types/types";
+import useUserContext from "../hooks/useUserContext";
 
-const getProductsService = async (token: string) => {
-    return await axios.get(
-            GET_PRODUCTS_API_URL,
+const ProductService = () => {
+    const { user } = useUserContext()
 
+    const getProductsService = async () => {
+        return await axios.get(
+                GET_PRODUCTS_API_URL,
+    
+                {
+                    headers: {
+                        Authorization: `Bearer ${user?.token}`,
+                    }
+                }
+            );
+    };
+    
+    const createProductService = async (data: CreateProduct) => {
+        console.log(data);
+        return await axios.post(
+    
+            CREATE_PRODUCT_API_URL,
+    
+            data,
+    
             {
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${user?.token}`,
                 }
             }
-        );
-};
+        )
+    }
 
-export {
-    getProductsService,
-};
+    return { getProductsService, createProductService}
+}
+export default ProductService
+

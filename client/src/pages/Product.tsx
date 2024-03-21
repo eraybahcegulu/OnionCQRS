@@ -1,13 +1,14 @@
 import useUser from "../hooks/useUserContext";
 import NotAuth from './NotAuth';
 import LoadingSpinner from "../components/LoadingSpinner";
-import { Button, User } from "@nextui-org/react";
-import { useNavigate } from "react-router-dom";
+import GetProducts from "../components/GetProducts";
+import AddProduct from "../components/AddProduct";
+import { User } from "@nextui-org/react";
+import GoHomeButton from "../components/GoHomeButton";
 
-
-const Home = () => {
+const Product = () => {
     const { user, userIsLoading } = useUser()
-    const navigate = useNavigate();
+
     if (userIsLoading) return <div className="min-h-screen bg-gradient-to-b from-[#ffffff] to-[#000000] max-h-full p-20 flex justify-center items-center "> <LoadingSpinner /></div>
     if (!user) return <NotAuth />
 
@@ -22,14 +23,12 @@ const Home = () => {
                     src: ""
                 }}
             />
-            <div className="flex flex-row gap-2">
-                <Button color="warning" variant="shadow" onClick={() => navigate('/product')} > Product </Button>
-                <Button color="warning" variant="shadow" onClick={() => navigate('/brand')}> Brand </Button>
+            <GoHomeButton/>
+            <AddProduct />
 
-            </div>
-
+            <GetProducts />
         </div>
     )
 }
 
-export default Home
+export default Product

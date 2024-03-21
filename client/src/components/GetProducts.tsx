@@ -1,17 +1,27 @@
 import { useQuery } from 'react-query';
-import { getProductsService } from '../services/ProductService'
-import { Product, User } from '../types/types';
+import { Product } from '../types/types';
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue, Button } from "@nextui-org/react";
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import LoadingSpinner from './LoadingSpinner';
-const GetProducts = ({ user }: { user: User }) => {
+import ProductService from '../services/ProductService';
 
-    const { data, isLoading } = useQuery('products', () => getProductsService(user.token));
+const GetProducts = () => {
+    const { getProductsService } = ProductService();
+
+    const { data, isLoading } = useQuery('products', () => getProductsService());
 
     const columns = [
         {
+            key: "id",
+            label: "ID",
+        },
+        {
             key: "title",
             label: "TITLE",
+        },
+        {
+            key: "brand",
+            label: "BRAND",
         },
         {
             key: "description",
@@ -44,7 +54,7 @@ const GetProducts = ({ user }: { user: User }) => {
         return <div>Error</div>;
     }
     return (
-        <Table className='text-white dark max-w-[1200px] max-h-[800px] ' aria-label="Category table">
+        <Table className='text-white dark max-w-[1200px] max-h-[450px] ' aria-label="Category table">
             <TableHeader columns={columns}>
                 {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
             </TableHeader>
@@ -58,6 +68,13 @@ const GetProducts = ({ user }: { user: User }) => {
                                         return (
                                             <TableCell>
                                                 %{item.discount}
+                                            </TableCell>
+                                        );
+                                    }
+                                    if (columnKey === "brand") {
+                                        return (
+                                            <TableCell>
+                                                {item.brand.name}
                                             </TableCell>
                                         );
                                     }

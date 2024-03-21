@@ -8,7 +8,8 @@ namespace Project.Application.Features.Brands.Queries.GetAllBrands
 {
     public class GetAllBrandsQueryResponse
     {
+        public string Id { get; set; }
         public string Name { get; set; }
-        public bool IsDeleted { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }
