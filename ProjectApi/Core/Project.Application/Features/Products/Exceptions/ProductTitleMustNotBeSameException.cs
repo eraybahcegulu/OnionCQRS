@@ -9,6 +9,6 @@ namespace Project.Application.Features.Products.Exceptions
 {
     public class ProductTitleMustNotBeSameException : BaseException
     {
-        public ProductTitleMustNotBeSameException() : base("Ürün başlığı zaten var!") { }
+        public ProductTitleMustNotBeSameException() : base("This title is already registered") { }
     }
 }

@@ -15,25 +15,25 @@ namespace Project.Application.Features.Auth.Command.Register
                 .NotEmpty()
                 .MaximumLength(50)
                 .MinimumLength(2)
-                .WithName("İsim Soyisim");
+                .WithName("Name surname");
 
             RuleFor(x => x.Email)
                 .NotEmpty()
                 .MaximumLength(60)
                 .EmailAddress()
                 .MinimumLength(8)
-                .WithName("E-posta Adresi");
+                .WithName("Email");
 
             RuleFor(x => x.Password)
                 .NotEmpty()
                 .MinimumLength(6)
-                .WithName("Parola");
+                .WithName("Password");
 
             RuleFor(x => x.ConfirmPassword)
                 .NotEmpty()
                 .MinimumLength(6)
                 .Equal(x => x.Password)
-                .WithName("Parola Tekrarı");
+                .WithName("Confirm Password");
         }
     }
 }

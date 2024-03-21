@@ -16,28 +16,28 @@ namespace Project.Application.Features.Products.Command.UpdateProduct
 
             RuleFor(x => x.Title)
                 .NotEmpty()
-                .WithName("Başlık");
+                .WithName("Title");
 
             RuleFor(x => x.Description)
                 .NotEmpty()
-                .WithName("Açıklama");
+                .WithName("Description");
 
             RuleFor(x => x.BrandId)
                 .GreaterThan(0)
-                .WithName("Marka");
+                .WithName("Brand");
 
             RuleFor(x => x.Price)
                 .GreaterThan(0)
-                .WithName("Fiyat");
+                .WithName("Price");
 
             RuleFor(x => x.Discount)
                 .GreaterThanOrEqualTo(0)
-                .WithName("İndirim Oranı");
+                .WithName("Discount");
 
             RuleFor(x => x.CategoryIds)
                 .NotEmpty()
                 .Must(categories => categories.Any())
-                .WithName("Kategoriler");
+                .WithName("Categories");
 
         }
     }

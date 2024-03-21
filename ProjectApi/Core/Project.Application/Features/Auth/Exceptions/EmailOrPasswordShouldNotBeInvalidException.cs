@@ -9,7 +9,7 @@ namespace Project.Application.Features.Auth.Exceptions
 {
     public class EmailOrPasswordShouldNotBeInvalidException : BaseException
     {
-        public EmailOrPasswordShouldNotBeInvalidException() : base("Kullanıcı adı veya şifre yanlıştır.") { }
+        public EmailOrPasswordShouldNotBeInvalidException() : base("Invalid email or password.") { }
 
     }
 }

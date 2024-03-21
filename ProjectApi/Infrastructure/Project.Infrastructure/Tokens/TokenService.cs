@@ -77,7 +77,7 @@ namespace Project.Infrastructure.Tokens
                 || !jwtSecurityToken.Header.Alg
                 .Equals(SecurityAlgorithms.HmacSha256,
                 StringComparison.InvariantCultureIgnoreCase))
-                throw new SecurityTokenException("Token bulunamadı.");
+                throw new SecurityTokenException("Token not found.");
 
             return principal;
 
