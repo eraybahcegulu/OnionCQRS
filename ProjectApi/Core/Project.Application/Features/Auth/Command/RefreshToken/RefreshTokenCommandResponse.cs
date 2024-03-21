@@ -8,6 +8,8 @@ namespace Project.Application.Features.Auth.Command.RefreshToken
 {
     public class RefreshTokenCommandResponse
     {
+        public string Email { get; set; }
+        public string FullName { get; set; }
         public string AccessToken { get; set; }
         public string RefreshToken { get; set; }
     }

@@ -47,6 +47,8 @@ namespace Project.Application.Features.Auth.Command.RefreshToken
 
             return new()
             {
+                FullName = user.FullName,
+                Email = user.Email,
                 AccessToken = new JwtSecurityTokenHandler().WriteToken(newAccessToken),
                 RefreshToken = newRefreshToken,
             };

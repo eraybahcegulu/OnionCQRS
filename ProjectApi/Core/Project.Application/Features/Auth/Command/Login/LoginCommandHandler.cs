@@ -57,9 +57,10 @@ namespace Project.Application.Features.Auth.Command.Login
 
             return new()
             {
+                FullName = user.FullName,
+                Email = user.Email,
                 Token = _token,
                 RefreshToken = refreshToken,
-                Expiration = token.ValidTo
             };
 
         }
