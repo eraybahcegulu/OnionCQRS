@@ -1,7 +1,17 @@
+import Home from "./pages/Home";
 import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
 import Register from "./pages/Register";
 
 export const routes = [
+    {
+        path: '*',
+        element: <NotFound />
+    },
+    {
+        path: '/',
+        element: <Login />
+    },
     {
         path: '/login',
         element: <Login />
@@ -9,5 +19,9 @@ export const routes = [
     {
         path: '/register',
         element: <Register />
+    },
+    {
+        path: '/home',
+        element: <Home />
     },
 ];
