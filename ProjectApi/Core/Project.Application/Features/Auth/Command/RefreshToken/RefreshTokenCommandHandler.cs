@@ -31,7 +31,7 @@ namespace Project.Application.Features.Auth.Command.RefreshToken
 
         public async Task<RefreshTokenCommandResponse> Handle(RefreshTokenCommandRequest request, CancellationToken cancellationToken)
         {
-            ClaimsPrincipal? principal = tokenService.GetPrincipalFromExpiredToken(request.AccessToken);
+            ClaimsPrincipal? principal = tokenService.GetPrincipalFromExpiredToken(request.Token);
             string email = principal.FindFirstValue(ClaimTypes.Email);
 
             User? user = await userManager.FindByEmailAsync(email);
@@ -49,7 +49,7 @@ namespace Project.Application.Features.Auth.Command.RefreshToken
             {
                 FullName = user.FullName,
                 Email = user.Email,
-                AccessToken = new JwtSecurityTokenHandler().WriteToken(newAccessToken),
+                Token = new JwtSecurityTokenHandler().WriteToken(newAccessToken),
                 RefreshToken = newRefreshToken,
             };
         }
