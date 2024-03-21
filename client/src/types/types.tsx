@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface UserRegister {
     fullName: string;
     email: string;
@@ -5,6 +7,27 @@ export interface UserRegister {
     confirmPassword: string;
 }
 
+export interface UserLogin {
+    email: string;
+    password: string;
+}
+
 export interface ErrorResponse {
     Errors: string[];
+}
+
+export interface UserProviderProps {
+    children: ReactNode;
+}
+
+export interface User {
+    fullName: string;
+    email: string;
+    refreshToken: string;
+    token: string;
+}
+
+export interface UserContextType {
+    user: User | null;
+    setUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
