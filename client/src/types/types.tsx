@@ -33,3 +33,12 @@ export interface UserContextType {
     setUserIsLoading(value: boolean): void;
     setUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
+
+export interface Product {
+    id: number;
+    title: string;
+    description: string;
+    price: number;
+    discount: number;
+    createdDate: string;
+}
