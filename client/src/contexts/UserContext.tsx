@@ -4,7 +4,6 @@ import { refreshTokenService } from '../services/AuthService';
 import { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 
-
 const UserContext = createContext<UserContextType>({
     user: null,
     userIsLoading: true,
@@ -20,8 +19,8 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         try {
             const res = await refreshTokenService(token, refreshToken);
             setUser(res.data)
-                localStorage.setItem('refreshToken', res.data.refreshToken);
-                localStorage.setItem('token', res.data.token);
+            localStorage.setItem('refreshToken', res.data.refreshToken);
+            localStorage.setItem('token', res.data.token);
         } catch (error) {
             const axiosError = error as AxiosError
             if (axiosError.response && axiosError.response.data) {
@@ -61,8 +60,6 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         </UserContext.Provider>
     );
 };
-
-
 
 export {
     UserProvider

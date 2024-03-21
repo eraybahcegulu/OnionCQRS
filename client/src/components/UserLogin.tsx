@@ -16,7 +16,7 @@ const validationSchema = Yup.object({
 });
 
 const UserLogin = () => {
-    const { setUser } = useUser();
+    const { setUser, setUserIsLoading } = useUser();
     const navigate = useNavigate();
     const loginMutation = useMutation(loginService,
         {
@@ -24,6 +24,7 @@ const UserLogin = () => {
                 setUser(res.data)
                 localStorage.setItem('refreshToken', res.data.refreshToken);
                 localStorage.setItem('token', res.data.token);
+                setUserIsLoading(false);
                 navigate('/home')
             },
             onError: (error) => {

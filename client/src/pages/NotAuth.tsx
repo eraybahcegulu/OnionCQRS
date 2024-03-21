@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const NotAuth = () => {
     const navigate = useNavigate();
     return (
-        <div className="min-h-screen max-h-full bg-gradient-to-b  p-20 flex justify-center items-center ">
+        <div className="min-h-screen max-h-full p-20 flex justify-center items-center ">
             <Result
                 status="403"
                 title="403"
