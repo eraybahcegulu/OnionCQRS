@@ -19,7 +19,20 @@ const loginService = async (data: UserLogin) => {
         )
 }
 
+const refreshTokenService = async (Token: string, RefreshToken: string) => {
+    return await axios.post(
+        
+            "http://localhost:5000/api/Auth/RefreshToken",
+
+            {
+                Token: Token,
+                RefreshToken: RefreshToken
+            }
+        )
+}
+
 export {
     registerService,
-    loginService
+    loginService,
+    refreshTokenService
 };

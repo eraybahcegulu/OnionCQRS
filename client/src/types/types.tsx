@@ -29,5 +29,7 @@ export interface User {
 
 export interface UserContextType {
     user: User | null;
+    userIsLoading: boolean;
+    setUserIsLoading(value: boolean): void;
     setUser: React.Dispatch<React.SetStateAction<User | null>>;
 }

@@ -15,16 +15,15 @@ const validationSchema = Yup.object({
     password: Yup.string().required("Password required to login"),
 });
 
-
-
 const UserLogin = () => {
     const { setUser } = useUser();
     const navigate = useNavigate();
     const loginMutation = useMutation(loginService,
         {
             onSuccess: (res) => {
-                console.log(res);
                 setUser(res.data)
+                localStorage.setItem('refreshToken', res.data.refreshToken);
+                localStorage.setItem('token', res.data.token);
                 navigate('/home')
             },
             onError: (error) => {
