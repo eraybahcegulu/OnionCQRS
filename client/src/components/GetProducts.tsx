@@ -30,6 +30,10 @@ const GetProducts = ({ user }: { user: User }) => {
             label: "DISCOUNT PRICE",
         },
         {
+            key: "createdDate",
+            label: "CREATED DATE",
+        },
+        {
             key: "actions",
             label: "ACTIONS",
         },
@@ -40,7 +44,7 @@ const GetProducts = ({ user }: { user: User }) => {
         return <div>Error</div>;
     }
     return (
-        <Table className='text-white dark max-w-[1000px] max-h-[1000px] ' aria-label="Category table">
+        <Table className='text-white dark max-w-[1200px] max-h-[800px] ' aria-label="Category table">
             <TableHeader columns={columns}>
                 {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
             </TableHeader>
@@ -69,6 +73,13 @@ const GetProducts = ({ user }: { user: User }) => {
                                             <TableCell>
                                                 €{(item.price - (item.price * item.discount / 100)).toFixed(2)}
                                             </TableCell>
+                                        );
+                                    }
+                                    if (columnKey === "createdDate") {
+                                        return (
+                                            <TableCell>
+                                            {new Date(item.createdDate).toLocaleString()}
+                                        </TableCell>
                                         );
                                     }
                                     if (columnKey === "actions") {

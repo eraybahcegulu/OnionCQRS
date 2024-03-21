@@ -40,5 +40,5 @@ export interface Product {
     description: string;
     price: number;
     discount: number;
-    createdDate: string;
+    createdDate: Date;
 }

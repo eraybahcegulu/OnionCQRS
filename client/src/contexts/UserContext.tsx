@@ -15,7 +15,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
     const [userIsLoading, setUserIsLoading] = useState<boolean>(true);
 
-    const fetchUserData = async (token: string, refreshToken: string) => {
+    const fetchUser = async (token: string, refreshToken: string) => {
         try {
             const res = await refreshTokenService(token, refreshToken);
             setUser(res.data)
@@ -39,7 +39,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         const token = localStorage.getItem('token');
         const refreshToken = localStorage.getItem('refreshToken');
         if (token && refreshToken) {
-            fetchUserData(token, refreshToken);
+            fetchUser(token, refreshToken);
         }
     };
 
